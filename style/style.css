@@ -1,216 +1,205 @@
 /* TYPOGRAPHY */
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap");
 
 body {
-  font-family: 'Libre Franklin', sans-serif;
+	font-family: "Libre Franklin", sans-serif;
 }
 
-
 /* RESET */
-
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 * {
-  margin: 0;
+	margin: 0;
 }
-
 
 /* VARIABLES  */
 
 :root {
-  --dark-green: #4e914c;
-  --light-green: #ebf3f2;
-  --red: #ef4d40;
+	--dark-green: #4e914c;
+	--light-green: #ebf3f2;
+	--red: #ef4d40;
 }
 
-
 body {
-  margin: 0;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-  background-color: var(--light-green);
+	margin: 0;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+	background-color: var(--light-green);
 }
 
 header {
-  background-color: var(--dark-green);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
+	background-color: var(--dark-green);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
 
-  nav {
-    ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      padding: 0;
-      margin: 0;
+	nav {
+		ul {
+			list-style: none;
+			display: flex;
+			gap: 1rem;
+			padding: 0;
+			margin: 0;
 
-      li {
-        cursor: pointer;
-      }
+			li {
+				cursor: pointer;
+			}
 
-      a {
-        text-decoration: none;
-        color: white;
-      }
-    }
-  }
+			a {
+				text-decoration: none;
+				color: white;
+			}
+		}
+	}
 
-  >div {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-  }
+	> div {
+		list-style: none;
+		display: flex;
+		gap: 1rem;
+		padding: 0;
+		margin: 0;
+	}
 }
-
 
 .products {
-  display: grid;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  padding: 24px 0px;
+	display: grid;
+	max-width: 1200px;
+	margin-inline: auto;
+	padding-inline: 24px;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 24px;
+	padding: 24px 0px;
 }
-
 
 article {
-  position: relative;
-  border-radius: 16px;
-  box-shadow: none;
-  background: #fff;
-  transform-origin: center;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
+	position: relative;
+	border-radius: 16px;
+	box-shadow: none;
+	background: #fff;
+	transform-origin: center;
+	transition: all 0.4s ease-in-out;
+	overflow: hidden;
 }
 
-
 article h2 {
-  margin: 0 0 18px 0;
-  font-size: 1.9rem;
-  letter-spacing: 0.06em;
-  color: black;
-  text-align: center;
+	margin: 0 0 18px 0;
+	font-size: 1.9rem;
+	letter-spacing: 0.06em;
+	color: black;
+	text-align: center;
 }
 
 figure {
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+	margin: 0;
+	padding: 0;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
 }
 
 article img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .article-body {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  height: 200px;
-  padding: 14px;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	height: 200px;
+	padding: 14px;
+	justify-content: space-between;
 }
-
-
 
 footer {
-  background-color: var(--dark-green);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
+	background-color: var(--dark-green);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
 }
-
 
 /* BUTTONS */
 
 .button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	cursor: pointer;
 }
 
 .button-primary {
-  background-color: var(--dark-green);
-  color: white;
-  border: 2px solid var(--dark-green);
+	background-color: var(--dark-green);
+	color: white;
+	border: 2px solid var(--dark-green);
 }
 
 .button-secondary {
-  background-color: white;
-  color: var(--dark-green);
-  border: 2px solid var(--dark-green);
+	background-color: white;
+	color: var(--dark-green);
+	border: 2px solid var(--dark-green);
 }
 
 .button-secondary:hover,
 .button-secondary:focus {
-  background-color: var(--dark-green);
-  color: white;
+	background-color: var(--dark-green);
+	color: white;
 }
 
 .button-primary:hover,
 .button-primary:focus {
-  background-color: white;
-  color: var(--dark-green);
+	background-color: white;
+	color: var(--dark-green);
 }
 
 .button-red {
-  background-color: var(--red);
-  color: white;
-  border: 2px solid var(--red);
+	background-color: var(--red);
+	color: white;
+	border: 2px solid var(--red);
 }
 
 .button-red:hover,
 .button-red:focus {
-  background-color: white;
-  color: var(--red);
+	background-color: white;
+	color: var(--red);
 }
 
 .button-icon {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-  padding: 8px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: inherit;
+	padding: 8px;
 }
 
 .dropdown {
-  position: relative;
+	position: relative;
 }
 
-
 .dropdown-menu {
-  position: absolute;
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid grey;
-  padding: 20px;
-  right: 50%;
-  z-index: 99;
+	position: absolute;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid grey;
+	padding: 20px;
+	right: 50%;
+	z-index: 99;
 }

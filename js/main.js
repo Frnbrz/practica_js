@@ -1,4 +1,3 @@
-const listaProductos = document.querySelector('.products')
+const listaProductos = document.querySelector(".products");
 
-
-renderProducts(productos)
+renderProducts(productos);

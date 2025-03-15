@@ -1,4 +1,4 @@
-let productsCart = []
+let productsCart = getFromLocalStorage('productsCart') || []
 let cartListElement = document.querySelector('.cart-list')
 const cartTotalElement = document.querySelector('.cart-total')
 const listaProductos = document.querySelector('.products')

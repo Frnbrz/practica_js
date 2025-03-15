@@ -14,11 +14,12 @@
     <h1>GreenShop</h1>
     <nav aria-label="Menú principal">
       <ul>
-        <li><a href="#" aria-label="Inicio">Inicio</a></li>
-        <li><a href="#" aria-label="Plantas">Plantas</a></li>
         <li>
-          <a href="#" aria-label="Blog">Blog</a>
+          <a href="#" aria-label="Inicio">Inicio</a>
         </li>
+        <li><a href="#" aria-label="Plantas">Plantas</a>
+        </li>
+        <li> <a href="#" aria-label="Blog">Blog</a> </li>
         <li>
           <a href="#" aria-label="Contacto">
             Contacto
@@ -32,10 +33,11 @@
       <div class="dropdown">
         <button class="button button-icon" type="button" aria-label="Ver Carrito">🛒</button>
         <div class="dropdown-menu" aria-label="Carrito de compras">
-          <h2>carrito</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga at optio aut laudantium omnis, possimus
-            voluptas alias voluptatum sunt dignissimos.</p>
-          <button class="button button-secondary">comprar</button>
+          <h3>Carrito de Compras</h3>
+          <p class="cart-list"></p>
+          <p>Total: <span class="cart-total">0€</span></p>
+          <button class="button button-secondary" onclick="clearShoppingCart()">Vaciar Carrito</button>
+          <button class="button button-primary" onclick="proceedPurchase()">Proceder a Comprar</button>
         </div>
       </div>
       <button class="button button-icon" type="button" aria-label="Ver Perfil">👤</button>
@@ -50,6 +52,11 @@
   <footer>
     <p>© 2023 Mi Sitio Web</p>
   </footer>
+  <dialog id="modalDialog">
+    <h2>Compra realizada</h2>
+    <div class="list-purchase"></div>
+    <button class="button button-secondary" onclick="closeDialog()">Cerrar</button>
+  </dialog>
 
   <script src="./js/data.js"></script>
   <script src="./js/utils.js"></script>

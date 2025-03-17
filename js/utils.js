@@ -93,18 +93,18 @@ function renderProducts(productos) {
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The shopping cart item element.
  */
-function createShoppingCart(product){
+function createShoppingCart(product) {
 	const div = createElement('div', '', '')
 
 	const span = createElement('span', '', `${product.nombre} - €${product.precio} x ${product.count}`)
 
 	const buttonRemove = createButton('❌', () => removeProduct(product), 'button-icon')
 	const buttonPlus = createButton('+', () => addCountProduct(product), 'button-red button-sm')
-	
+
 	const buttonLess = createButton('-', () => removeCountProduct(product), 'button-red button-sm')
 
 
-	div.append(buttonRemove, span,  buttonPlus, buttonLess)
+	div.append(buttonRemove, span, buttonPlus, buttonLess)
 
 	return div
 
@@ -114,8 +114,8 @@ function createShoppingCart(product){
  * Renders the shopping cart.
  * @param {Array} productsCart - The list of products in the cart.
  */
-function renderCart(productsCart){
-	cartListElement.innerHTML=''
+function renderCart(productsCart) {
+	cartListElement.innerHTML = ''
 
 	productsCart.forEach((product, index) => {
 		const productElement = createShoppingCart(product)
@@ -129,13 +129,13 @@ function renderCart(productsCart){
  * Decreases the count of a product in the cart.
  * @param {Object} product - The product object.
  */
-function removeCountProduct(product){
+function removeCountProduct(product) {
 	const productInCart = productsCart.find(p => p.id === product.id);
 	if (productInCart) {
 		productInCart.count -= 1;
 		if (productInCart.count === 0) {
 			removeProduct(product);
-			saveToLocalStorage('productsCart', productsCart); 
+			saveToLocalStorage('productsCart', productsCart);
 			renderCart(productsCart);
 		} else {
 			renderCart(productsCart);
@@ -180,7 +180,7 @@ function addProductToCart(product) {
 			count: 1
 		};
 		productsCart.push(newProduct);
-		saveToLocalStorage('productsCart', productsCart); 
+		saveToLocalStorage('productsCart', productsCart);
 	}
 	renderCart(productsCart);
 	showDropdown();
@@ -189,7 +189,7 @@ function addProductToCart(product) {
 /**
  * Clears the shopping cart.
  */
-function clearShoppingCart(){
+function clearShoppingCart() {
 	productsCart = []
 	renderCart(productsCart)
 }
@@ -198,11 +198,11 @@ function clearShoppingCart(){
  * Removes a product from the cart.
  * @param {Object} product - The product object.
  */
-function removeProduct(product){
+function removeProduct(product) {
 	const index = productsCart.findIndex(p => p.id === product.id);
 	if (index !== -1) {
 		productsCart.splice(index, 1);
-		saveToLocalStorage('productsCart', productsCart); 
+		saveToLocalStorage('productsCart', productsCart);
 		renderCart(productsCart);
 	}
 }
@@ -211,7 +211,7 @@ function removeProduct(product){
  * Increases the count of a product in the cart.
  * @param {Object} product - The product object.
  */
-function addCountProduct(product){
+function addCountProduct(product) {
 	const productInCart = productsCart.find(p => p.id === product.id);
 	if (productInCart) {
 		productInCart.count += 1;
@@ -247,7 +247,7 @@ function hideDropdown() {
 /**
  * Proceeds with the purchase process.
  */
-function proceedPurchase(){
+function proceedPurchase() {
 	hideDropdown()
 	renderPurchase()
 	clearShoppingCart()
@@ -271,7 +271,7 @@ function closeDialog() {
 /**
  * Renders the purchase summary.
  */
-function renderPurchase(){
+function renderPurchase() {
 
 	listPurchaseElement.innerHTML = ''
 
@@ -290,7 +290,7 @@ function renderPurchase(){
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The purchased product element.
  */
-function productPurchase(product){
+function productPurchase(product) {
 	const span = createElement('span', '', `${product.nombre} - €${product.precio} x ${product.count}`)
 
 	return span

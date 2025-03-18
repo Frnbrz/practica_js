@@ -13,6 +13,7 @@ El proyecto está organizado en los siguientes archivos y carpetas:
 - `js/data.js`: Archivo JavaScript que contiene los datos de los productos.
 - `js/utils.js`: Archivo JavaScript que contiene funciones auxiliares para la aplicación.
 - `js/main.js`: Archivo JavaScript principal que inicializa y renderiza la aplicación.
+- `images/`: Carpeta que contiene las imágenes de los productos.
 
 ## Funcionalidades
 
@@ -21,6 +22,12 @@ El proyecto está organizado en los siguientes archivos y carpetas:
 3. **Gestión del Carrito**: Los usuarios pueden ver, modificar y eliminar productos del carrito.
 4. **Proceder a la Compra**: Los usuarios pueden proceder a la compra y ver un resumen de su compra.
 5. **Persistencia de Datos**: Los datos del carrito se guardan en el almacenamiento local del navegador.
+
+## Mejoras
+
+1. **Diseño Responsivo**: Hacer que la aplicación sea responsive para dispositivos móviles.
+2. **LocalStorage**: Guardar los datos del carrito en el LocalStorage del navegador.
+3. **Validación de Stock**: Valid que la cantidad de productos añadidos al carrito no exceda el stock disponible.
 
 ## Instalación
 

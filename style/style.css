@@ -196,6 +196,14 @@ footer {
   font-size: 0.875rem;
 }
 
+.button:disabled {
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.6;
+  border: 2px solid grey;
+}
+
 .dropdown {
   position: relative;
 }

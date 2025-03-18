@@ -15,7 +15,7 @@
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The product card element.
  */
-function createProductCard({ imagen, nombre, descripcion, id }) {
+function createProductCard({ imagen, nombre, descripcion, id, stock }) {
 	const article = createHTMLElement('article');
 
 	const figure = createHTMLElement('figure', '', `<img src="${imagen}" alt="${nombre}" />`);
@@ -30,6 +30,11 @@ function createProductCard({ imagen, nombre, descripcion, id }) {
 	articleBody.appendChild(descP);
 
 	const button = createButton('Añadir al carrito', () => addProductToCart(id), 'button-primary');
+
+	if (stock === 0) {
+		button.disabled = true;
+	}
+
 	articleBody.appendChild(button);
 
 	article.appendChild(articleBody);
@@ -93,14 +98,20 @@ function renderProducts(productos) {
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The shopping cart item element.
  */
-function createShoppingCart({ precio, count, nombre, id }) {
+function createShoppingCart({ precio, count, nombre, id, stock }) {
 	const div = createElement('div', '', '')
-
 	const span = createElement('span', '', `${nombre} - €${precio} x ${count}`)
 
 	const buttonRemove = createButton('❌', () => removeProduct(id), 'button-icon')
 	const buttonPlus = createButton('+', () => addCountProduct(id), 'button-red button-sm')
 	const buttonLess = createButton('-', () => removeCountProduct(id), 'button-red button-sm')
+
+
+
+	if (stock === count) {
+		buttonPlus.disabled = true;
+		document.querySelector(`article[id="${id - 1}"] button`).disabled = true
+	}
 
 
 	div.append(buttonRemove, span, buttonPlus, buttonLess)
@@ -219,6 +230,8 @@ function addCountProduct(id) {
 	}
 }
 
+
+
 /**
  * Calculates the total price of the products in the cart.
  * @param {Array} productsCart - The list of products in the cart.
@@ -250,8 +263,25 @@ function hideDropdown() {
 function proceedPurchase() {
 	hideDropdown()
 	renderPurchase()
+	stockValidate()
 	clearShoppingCart()
 	openDialog()
+}
+
+
+
+
+/**
+ * Update products stock
+ * @function stockValidate
+ */
+function stockValidate() {
+	productsCart.forEach(cartItem => {
+		const product = productos.find(p => p.id === cartItem.id);
+		if (product) {
+			product.stock -= cartItem.count;
+		}
+	});
 }
 
 /**

@@ -230,10 +230,6 @@ footer {
   opacity: 1;
 }
 
-.dropdown-menu button:focus {
-  opacity: 1;
-}
-
 .cart-list {
   div {
     display: flex;

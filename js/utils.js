@@ -245,16 +245,16 @@ function calcTotal(productsCart) {
  * Shows the dropdown menu.
  */
 function showDropdown() {
-	document.querySelector('.dropdown-menu').style.opacity = '1';
-	document.querySelector('.dropdown-menu').style.visibility = 'visible';
+	const dropdownButton = document.querySelector('.button[aria-label="Ver Carrito"]');
+	dropdownButton.focus();
 }
 
 /**
  * Hides the dropdown menu.
  */
 function hideDropdown() {
-	document.querySelector('.dropdown-menu').style.opacity = '0';
-	document.querySelector('.dropdown-menu').style.visibility = 'hidden';
+	const dropdownButton = document.querySelector('.button[aria-label="Ver Carrito"]');
+	dropdownButton.blur();
 }
 
 /**

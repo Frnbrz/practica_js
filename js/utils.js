@@ -15,21 +15,21 @@
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The product card element.
  */
-function createProductCard(product) {
+function createProductCard({ imagen, nombre, descripcion, id }) {
 	const article = createHTMLElement('article');
 
-	const figure = createHTMLElement('figure', '', `<img src="${product.imagen}" alt="${product.NOMBRE}" />`);
+	const figure = createHTMLElement('figure', '', `<img src="${imagen}" alt="${nombre}" />`);
 	article.appendChild(figure);
 
 	const articleBody = createHTMLElement('div', 'article-body');
 
-	const h2 = createHTMLElement('h2', '', product.nombre);
+	const h2 = createHTMLElement('h2', '', nombre);
 	articleBody.appendChild(h2);
 
-	const descP = createHTMLElement('p', '', product.descripcion);
+	const descP = createHTMLElement('p', '', descripcion);
 	articleBody.appendChild(descP);
 
-	const button = createButton('Añadir al carrito', () => addProductToCart(product), 'button-primary');
+	const button = createButton('Añadir al carrito', () => addProductToCart(id), 'button-primary');
 	articleBody.appendChild(button);
 
 	article.appendChild(articleBody);
@@ -93,15 +93,14 @@ function renderProducts(productos) {
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The shopping cart item element.
  */
-function createShoppingCart(product) {
+function createShoppingCart({ precio, count, nombre, id }) {
 	const div = createElement('div', '', '')
 
-	const span = createElement('span', '', `${product.nombre} - €${product.precio} x ${product.count}`)
+	const span = createElement('span', '', `${nombre} - €${precio} x ${count}`)
 
-	const buttonRemove = createButton('❌', () => removeProduct(product), 'button-icon')
-	const buttonPlus = createButton('+', () => addCountProduct(product), 'button-red button-sm')
-
-	const buttonLess = createButton('-', () => removeCountProduct(product), 'button-red button-sm')
+	const buttonRemove = createButton('❌', () => removeProduct(id), 'button-icon')
+	const buttonPlus = createButton('+', () => addCountProduct(id), 'button-red button-sm')
+	const buttonLess = createButton('-', () => removeCountProduct(id), 'button-red button-sm')
 
 
 	div.append(buttonRemove, span, buttonPlus, buttonLess)
@@ -129,12 +128,12 @@ function renderCart(productsCart) {
  * Decreases the count of a product in the cart.
  * @param {Object} product - The product object.
  */
-function removeCountProduct(product) {
-	const productInCart = productsCart.find(p => p.id === product.id);
+function removeCountProduct(id) {
+	const productInCart = productsCart.find(p => p.id === id);
 	if (productInCart) {
 		productInCart.count -= 1;
 		if (productInCart.count === 0) {
-			removeProduct(product);
+			removeProduct(id);
 			saveToLocalStorage('productsCart', productsCart);
 			renderCart(productsCart);
 		} else {
@@ -167,11 +166,12 @@ function getFromLocalStorage(key) {
  * Adds a product to the cart or increases its count if already in the cart.
  * @param {Object} product - The product object.
  */
-function addProductToCart(product) {
-	const productInCart = productsCart.find(p => p.id === product.id);
+function addProductToCart(id) {
+	const productInCart = productsCart.find(p => p.id === id);
 	if (productInCart) {
-		addCountProduct(product);
+		addCountProduct(id);
 	} else {
+		const product = productos.find(p => p.id === id);
 		const newProduct = {
 			id: product.id,
 			nombre: product.nombre,
@@ -198,8 +198,8 @@ function clearShoppingCart() {
  * Removes a product from the cart.
  * @param {Object} product - The product object.
  */
-function removeProduct(product) {
-	const index = productsCart.findIndex(p => p.id === product.id);
+function removeProduct(id) {
+	const index = productsCart.findIndex(p => p.id === id);
 	if (index !== -1) {
 		productsCart.splice(index, 1);
 		saveToLocalStorage('productsCart', productsCart);
@@ -211,8 +211,8 @@ function removeProduct(product) {
  * Increases the count of a product in the cart.
  * @param {Object} product - The product object.
  */
-function addCountProduct(product) {
-	const productInCart = productsCart.find(p => p.id === product.id);
+function addCountProduct(id) {
+	const productInCart = productsCart.find(p => p.id === id);
 	if (productInCart) {
 		productInCart.count += 1;
 		renderCart(productsCart);
@@ -286,12 +286,12 @@ function renderPurchase() {
 }
 
 /**
- * Creates an element for a purchased product.
+ * Creates an element for a purchased product
  * @param {Object} product - The product object.
  * @returns {HTMLElement} The purchased product element.
  */
-function productPurchase(product) {
-	const span = createElement('span', '', `${product.nombre} - €${product.precio} x ${product.count}`)
+function productPurchase({ count, nombre, precio }) {
+	const span = createElement('span', '', `${nombre} - €${precio} x ${count}`)
 
 	return span
 }
